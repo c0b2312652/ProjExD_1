@@ -15,7 +15,7 @@ def main():
     kk_img = pg.transform.flip(kk_img, True, False)
     kk_rct = kk_img.get_rect()  #こうかとんrectの抽出
     kk_rct.center = 300, 200
-    
+
     tmr = 0
 
     while True:
@@ -36,7 +36,10 @@ def main():
         if key_lst[pg.K_LEFT]:    #左キーを押したら
             kk_rct.move_ip(-1, 0)
         if key_lst[pg.K_RIGHT]:  #右キーを押したら
-            kk_rct.move_ip(1, 0)
+            kk_rct.move_ip(2, 0)
+       
+        kk_rct.move_ip(-1, 0)
+        
         screen.blit(kk_img, kk_rct) #kk_imgをkk_rctの設定に従って貼り付け 
         pg.display.update()
         tmr += 1        

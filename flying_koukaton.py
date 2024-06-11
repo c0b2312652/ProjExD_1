@@ -21,6 +21,9 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+        
+        dx = -1
+        dy = 0
 
         kk_img_x = tmr % 3200
         screen.blit(bg_img, [-kk_img_x, 0])
@@ -30,15 +33,15 @@ def main():
 
         key_lst = pg.key.get_pressed()  #全てのキーの押下状態を取得
         if key_lst[pg.K_UP]:    #上キーを押したら
-            kk_rct.move_ip(0, -1)
+            dy += -1
         if key_lst[pg.K_DOWN]:  #下キーを押したら
-            kk_rct.move_ip(0, 1)
+            dy += 1
         if key_lst[pg.K_LEFT]:    #左キーを押したら
-            kk_rct.move_ip(-1, 0)
+            dx += -1
         if key_lst[pg.K_RIGHT]:  #右キーを押したら
-            kk_rct.move_ip(2, 0)
-       
-        kk_rct.move_ip(-1, 0)
+            dx += 2
+        
+        kk_rct.move_ip(dx, dy)       
         
         screen.blit(kk_img, kk_rct) #kk_imgをkk_rctの設定に従って貼り付け 
         pg.display.update()
